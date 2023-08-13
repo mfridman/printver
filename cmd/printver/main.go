@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	version = "(devel)"
+	version string
 	jsonPtr = flag.Bool("json", false, "print build info as json")
 )
 
@@ -20,7 +20,7 @@ func main() {
 	flag.Parse()
 
 	buildInfo, ok := debug.ReadBuildInfo()
-	if ok && buildInfo != nil && buildInfo.Main.Version != "" {
+	if version == "" && ok && buildInfo != nil && buildInfo.Main.Version != "" {
 		version = buildInfo.Main.Version
 	}
 	if *jsonPtr {
