@@ -10,7 +10,7 @@ builds:
   - env:
       - CGO_ENABLED=0
     binary: printver
-    main: main.go
+    main: ./cmd/printver
     goos:
       # - linux
       - darwin

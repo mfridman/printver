@@ -19,12 +19,12 @@ func main() {
 
 	flag.Parse()
 
-	info, ok := debug.ReadBuildInfo()
-	if ok && info != nil && info.Main.Version != "" {
-		version = info.Main.Version
+	buildInfo, ok := debug.ReadBuildInfo()
+	if ok && buildInfo != nil && buildInfo.Main.Version != "" {
+		version = buildInfo.Main.Version
 	}
 	if *jsonPtr {
-		by, err := json.MarshalIndent(info, "", "  ")
+		by, err := json.MarshalIndent(buildInfo, "", "  ")
 		if err != nil {
 			log.Fatal(err)
 		}
